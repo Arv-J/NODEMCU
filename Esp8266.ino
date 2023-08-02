@@ -1,8 +1,9 @@
-#include "ESP8266WiFi.h" #include
-<FirebaseArduino.h> #include
-<DHT.h>
+#include "ESP8266WiFi.h" 
+#include <FirebaseArduino.h> 
+#include <DHT.h>
 #define FIREBASE_HOST "airquality-sys-default- rtdb.firebaseio.com"
 #define FIREBASE_AUTH "Q2R7brsqakpefGkbAm1FdFJpw02 bUEMPUG3Iv Vmy"
+
 //wifi connect
 const char* KNOWN_SSID[] =
 {"Stephanie 4G", "BatStateU ICT", "Ahjin"};
@@ -32,9 +33,6 @@ while (true); // no need to go further, hang in there, will auto launch the Soft
 // if you arrive here at least some networks are visible
 //
 boolean wifiFound = false; int i, n; Serial.begin(115200);
-
-
-
 ------
 Serial.print(nbVisibleNetworks); Serial.println(" network(s) found");
 dht.begin(); dht sensor data
@@ -43,12 +41,6 @@ dht.begin(); dht sensor data
 ---------------
 ------
 //  	 	
-
-
-
-
-
-
 // Set WiFi to station mode and disconnect from an AP if it was previously connected
 // check if we recognize one by comparing the visible networks
 // one by one with our list of known networks
@@ -72,12 +64,8 @@ Serial.println("");
 // SUCCESS, you are connected to the known WiFi network
 // -------------------------------------------
 ---------------
-
-
 Serial.println(F("WiFi connected, your IP address is "));
 Serial.println(WiFi.localIP());
-
-
 }
 } // end for each known wifi SSID
 if (wifiFound) break; // break from the "for each visible network" loop
@@ -107,11 +95,8 @@ isnan(air_q)) // Checking sensor working
 {
 //
 ------
-
 // We try to connect to the WiFi network we found
 //
-
-
 WiFi.begin(KNOWN_SSID[n], KNOWN_PASSWORD[n]);
 while (WiFi.status() != WL_CONNECTED) {
 Serial.println(F("Failed to read from DHT sensor!"));
@@ -120,7 +105,6 @@ return;
 Serial.print("Humidity: "); Serial.print(h);
 String fireHumid = String(h) + String("
 %");	//Humidity integer to string conversion
-
 
 Serial.print("% Temperature: "); Serial.print(t);
 Serial.println("°C ");
